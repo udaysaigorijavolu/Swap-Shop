@@ -1,6 +1,9 @@
 package com.swapshop.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,5 +20,9 @@ public class SignInController {
 	@PostMapping("/add")
 	public UserSignIn saveSignInUser(@RequestBody UserSignIn signIn) {
 		return signinService.saveUserSignIn(signIn);
+	}
+	@GetMapping("/get")
+	public List<UserSignIn> getAllUserSignIns(@RequestBody UserSignIn signIn){
+		return signinService.getAllSignInDetails(signIn);
 	}
 }
