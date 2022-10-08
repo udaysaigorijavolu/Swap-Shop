@@ -31,4 +31,13 @@ public class SignUpService {
 	public UserSignUp getUser( int id,UserSignUp signup ) {
 		return repository.findById(id).get();
 	}
+	public String getUserByEmail(String email,String password) {
+		UserSignUp user = repository.findByEmail(email);
+		if(user != null) {
+			if(user.getPassword().toString().equals(password)) {
+				return user.getRole();
+			}
+		}
+		 return "";
+	}
 }

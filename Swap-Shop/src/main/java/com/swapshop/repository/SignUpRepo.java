@@ -8,5 +8,12 @@ import com.swapshop.entity.UserSignUp;
 @Repository
 
 public interface SignUpRepo extends JpaRepository<UserSignUp, Integer>{
+
+	public UserSignUp findByEmail(String email);
+
+	
+
+	
+
 	
 }
