@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.swapshop.entity.UserSignIn;
 import com.swapshop.entity.UserSignUp;
 import com.swapshop.service.SignUpService;
 
@@ -40,5 +41,13 @@ public class SignUpController {
 	@GetMapping("/get/{id}")
 	public UserSignUp getUserbyId(@RequestBody UserSignUp signup,@PathVariable int id) {
 		return signupService.getUser(id, signup);
+	}
+	@PostMapping("/login")
+	public String  getUserByEmail(@RequestBody UserSignIn user) {
+		System.out.print("req bdy "+user.toString());
+		String email = user.getEmail();
+		String password = user.getPassword();
+		return signupService.getUserByEmail(email,password);
+		
 	}
 }

@@ -3,9 +3,8 @@ package com.swapshop.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.swapshop.entity.UserSignIn;
-
+import com.swapshop.entity.Product;
 @Repository
-public interface SignInRepo extends JpaRepository<UserSignIn, Integer> {
+public interface ProductRepo extends JpaRepository<Product, Integer>{
 
 }

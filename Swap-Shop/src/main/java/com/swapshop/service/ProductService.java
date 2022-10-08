@@ -1,56 +1,45 @@
 package com.swapshop.service;
 
-import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.swapshop.dao.ProductDao;
 import com.swapshop.entity.Product;
-import com.swapshop.helper.CSVHelper;
 
 @Service
 public class ProductService {
 
 	@Autowired
-	private ProductDao dao;
+	private ProductDao productdao;
 
-	public void save(MultipartFile file) {
-		try {
-			List<Product> products = CSVHelper.csvToProducts(file.getInputStream());
-			dao.saveAll(products);
-			
-		}catch(Exception e) {
-			throw new RuntimeException("Fail to load CSVData : " +e.getMessage());
-		}
+	public Product saveProduct(Product product) {
+		return productdao.save(product);
 	}
-	
-	 public ByteArrayInputStream load() {
-		 
-		 List<Product> tutorials = dao.findAll();
-		 ByteArrayInputStream in = CSVHelper.productsToCSV(tutorials);
-		 return in;
+
+	public List<Product> getAllProducts(){
+		return productdao.findAll();
 	}
-	 
 
-	 public List<Product> getAllProducts() {
-		 return dao.findAll();
-	 }
 
-	 public Product updateProduct(Product product, int id) {
-		 try {
-			 product.setId(id);
-				return dao.saveAndFlush(product);
-				
-		 }catch(Exception e) {
-			 throw new RuntimeException("Fail to Update.");
-		 }
-		 
-	 }
-	 
-	 public void deleteProductById(int id) {
-		 dao.deleteById(id);
-	 }
-}
+	public String deleteProductById(int id) {
+		 productdao.deleteById(id);
+		 return "Deleted successfully";
+	}
+
+
+	public Product updateProductById(Product product, int id) {
+		product.setId(id);
+		return productdao.save(product);
+	}
+
+
+
+	public Product getProductById(int id) {
+		return productdao.findById(id).get();
+
+	}
+
+
+	}
