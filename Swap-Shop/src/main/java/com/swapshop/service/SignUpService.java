@@ -25,10 +25,10 @@ public class SignUpService {
 		repository.deleteById(id);
 		return true;
 	}
-	public List<UserSignUp> getAllUsers(UserSignUp signup){
+	public List<UserSignUp> getAllUsers(){
 		return repository.findAll();
 	}
-	public UserSignUp getUser( int id,UserSignUp signup ) {
+	public UserSignUp getUser( int id) {
 		return repository.findById(id).get();
 	}
 	public String getUserByEmail(String email,String password) {
