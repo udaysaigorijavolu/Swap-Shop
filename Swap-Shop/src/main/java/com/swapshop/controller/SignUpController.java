@@ -34,13 +34,13 @@ public class SignUpController {
 		signupService.deleteUser(id);
 		return true;
 	}
-	@GetMapping("/get")
-	public List<UserSignUp> getAllUsers(@RequestBody UserSignUp signup) {
-		 return signupService.getAllUsers(signup);
+	@GetMapping("/getlist")
+	public List<UserSignUp> getAllUsers() {
+		 return signupService.getAllUsers();
 	}
 	@GetMapping("/get/{id}")
-	public UserSignUp getUserbyId(@RequestBody UserSignUp signup,@PathVariable int id) {
-		return signupService.getUser(id, signup);
+	public UserSignUp getUserbyId(@PathVariable int id) {
+		return signupService.getUser(id);
 	}
 	@PostMapping("/login")
 	public String  getUserByEmail(@RequestBody UserSignIn user) {
