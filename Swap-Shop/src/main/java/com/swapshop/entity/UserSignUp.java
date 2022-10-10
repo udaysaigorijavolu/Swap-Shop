@@ -26,7 +26,7 @@ public class UserSignUp {
 	private Date dob;
 	private String Gender;
 	private String Address;
-	private int PhNo;
+	private long PhNo;
 	private String Status;
 	private String City;
 	private String State;
